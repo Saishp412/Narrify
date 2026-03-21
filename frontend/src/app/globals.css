@@ -1,0 +1,330 @@
+@import "tailwindcss/preflight";
+@tailwind utilities;
+
+@import "tailwindcss";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #0a0f1c;
+  color: #f3f4f6;
+  line-height: 1.6;
+}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.2;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in-left {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slide-in-right {
+  from {
+    opacity: 0;
+    transform: translateX(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(20, 184, 166, 0.3);
+  }
+  50% {
+    box-shadow: 0 0 40px rgba(20, 184, 166, 0.6);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.6s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.animate-glow {
+  animation: glow 2s ease-in-out infinite;
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 3s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  animation: shimmer 2s infinite;
+}
+
+/* Custom font classes for consistent branding */
+.font-brand {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.1em;
+}
+
+.font-brand-light {
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.05em;
+  font-weight: 300;
+}
+
+/* Custom cursor styles - Professional dot and circle system (advizexperts.fr style) */
+/* Hide default cursor */
+* {
+  cursor: none !important;
+}
+
+/* Main cursor dot - small solid dot */
+.cursor-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #14b8a6;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: transform 0.08s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 1;
+  will-change: transform;
+}
+
+/* Main cursor circle - hollow circle that follows */
+.cursor-circle {
+  width: 40px;
+  height: 40px;
+  border: 1.5px solid #14b8a6;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: all 0.25s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0.5;
+  mix-blend-mode: difference;
+  will-change: transform, opacity;
+}
+
+/* Hover state - circle expands */
+.cursor-circle.hover {
+  transform: translate(-50%, -50%) scale(1.8);
+  opacity: 0.3;
+  border-color: #14b8a6;
+}
+
+/* Active state - circle scales down */
+.cursor-circle.active {
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0.8;
+  border-color: #14b8a6;
+}
+
+/* Dot hover state */
+.cursor-dot.hover {
+  transform: translate(-50%, -50%) scale(1.5);
+  background-color: #14b8a6;
+}
+
+/* Dot active state */
+.cursor-dot.active {
+  transform: translate(-50%, -50%) scale(0.8);
+  background-color: #14b8a6;
+}
+
+/* Text cursor - thin line for text inputs */
+.cursor-text {
+  width: 1.5px;
+  height: 18px;
+  background-color: #14b8a6;
+  position: fixed;
+  pointer-events: none;
+  z-index: 10000;
+  transform: translate(-50%, -50%);
+  transition: all 0.15s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  mix-blend-mode: difference;
+  will-change: transform, opacity;
+}
+
+.cursor-text.active {
+  opacity: 0.8;
+  height: 20px;
+}
+
+/* Link hover cursor - special state for links */
+.cursor-link-hover {
+  width: 60px;
+  height: 60px;
+  border: 2px solid #14b8a6;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  mix-blend-mode: difference;
+  will-change: transform, opacity;
+}
+
+.cursor-link-hover.active {
+  opacity: 0.6;
+  transform: translate(-50%, -50%) scale(1.2);
+  border-color: #14b8a6;
+}
+
+/* Button hover cursor - expanded circle */
+.cursor-button-hover {
+  width: 100px;
+  height: 100px;
+  border: 2px solid #14b8a6;
+  border-radius: 50%;
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  opacity: 0;
+  mix-blend-mode: difference;
+  will-change: transform, opacity;
+}
+
+.cursor-button-hover.active {
+  opacity: 0.5;
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: #14b8a6;
+}
+
+/* Alternative cursor styles for different elements */
+.cursor-glow {
+  /* This will be handled by JavaScript */
+}
+
+.cursor-pointer {
+  /* This will be handled by JavaScript */
+}
+
+.cursor-link {
+  /* This will be handled by JavaScript */
+}
+
+/* Fallback cursor styles for when JS is disabled */
+body.no-js {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="6" fill="rgba(20, 184, 166, 0.4)" stroke="rgba(20, 184, 166, 0.8)" stroke-width="1"><animate attributeName="r" values="6;8;6" dur="1.5s" repeatCount="indefinite"/></circle><circle cx="12" cy="12" r="10" fill="none" stroke="rgba(20, 184, 166, 0.3)" stroke-width="1" opacity="0.5"><animate attributeName="r" values="10;15;10" dur="1.5s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.5;0.1;0.5" dur="1.5s" repeatCount="indefinite"/></circle></svg>') 12 12, auto;
+}
+
+body.no-js button,
+body.no-js a,
+body.no-js .btn,
+body.no-js .glass-button {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5" fill="rgba(20, 184, 166, 0.3)" stroke="rgba(20, 184, 166, 0.7)" stroke-width="1"><animate attributeName="r" values="5;7;5" dur="1s" repeatCount="indefinite"/></circle><circle cx="12" cy="12" r="9" fill="none" stroke="rgba(20, 184, 166, 0.3)" stroke-width="1" opacity="0.4"><animate attributeName="r" values="9;13;9" dur="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0.1;0.4" dur="1s" repeatCount="indefinite"/></circle></svg>') 12 12, auto;
+}
+
+body.no-js input,
+body.no-js textarea,
+body.no-js select {
+  cursor: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><rect x="7" y="7" width="10" height="10" fill="rgba(20, 184, 166, 0.3)" stroke="rgba(20, 184, 166, 0.7)" stroke-width="1"><animate attributeName="width" values="10;12;10" dur="0.8s" repeatCount="indefinite"/><animate attributeName="height" values="10;12;10" dur="0.8s" repeatCount="indefinite"/><animate attributeName="x" values="7;6;7" dur="0.8s" repeatCount="indefinite"/><animate attributeName="y" values="7;6;7" dur="0.8s" repeatCount="indefinite"/></rect><rect x="5" y="5" width="14" height="14" fill="none" stroke="rgba(20, 184, 166, 0.3)" stroke-width="1" opacity="0.4"><animate attributeName="width" values="14;18;14" dur="1s" repeatCount="indefinite"/><animate attributeName="height" values="14;18;14" dur="1s" repeatCount="indefinite"/><animate attributeName="x" values="5;3;5" dur="1s" repeatCount="indefinite"/><animate attributeName="y" values="5;3;5" dur="1s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.4;0.1;0.4" dur="1s" repeatCount="indefinite"/></rect></svg>') 12 12, auto;
+}
+
+/* Custom underline animation for Create one link */
+.create-link {
+  position: relative !important;
+  text-decoration: none !important;
+  color: #14b8a6 !important;
+  transition: color 0.3s ease !important;
+}
+
+.create-link:hover {
+  color: #0d9488 !important;
+}
+
+.create-link::after {
+  content: '' !important;
+  position: absolute !important;
+  bottom: -4px !important;
+  left: 0 !important;
+  width: 0 !important;
+  height: 2px !important;
+  background-color: #14b8a6 !important;
+  transition: width 0.3s ease-out !important;
+}
+
+.create-link:hover::after {
+  width: 100% !important;
+}
