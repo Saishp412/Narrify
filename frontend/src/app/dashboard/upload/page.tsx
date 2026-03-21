@@ -68,7 +68,7 @@ export default function UploadPage() {
     const formData = new FormData();
     formData.append("pdf", selectedFile);
     formData.append("voiceId", selectedVoice.voiceId);
-    formData.append("style", voiceSettings.style || selectedVoice.style);
+    formData.append("style", voiceSettings.style || selectedVoice?.style || "");
     formData.append("stability", voiceSettings.stability.toString());
     formData.append("similarity_boost", voiceSettings.similarity_boost.toString());
 
@@ -417,7 +417,7 @@ export default function UploadPage() {
                       onChange={(e) => setVoiceSettings(prev => ({ ...prev, style: e.target.value }))}
                       className="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-xl text-black focus:outline-none focus:border-primary-500 transition-colors font-inter"
                     >
-                      <option value="">Default ({selectedVoice.style})</option>
+                      <option value="">Default ({selectedVoice?.style})</option>
                       <option value="neutral">Neutral</option>
                       <option value="narration">Narration</option>
                       <option value="storytelling">Storytelling</option>
@@ -469,7 +469,7 @@ export default function UploadPage() {
                   <div className="bg-gradient-to-br from-primary-500/10 to-accent-500/10 rounded-xl p-4 border border-white/10">
                     <h4 className="text-white font-semibold mb-2 font-outfit">Preview Settings</h4>
                     <p className="text-gray-300 text-sm font-inter">
-                      {selectedVoice.name} will narrate your document with a {voiceSettings.style || selectedVoice.style} style
+                      {selectedVoice?.name} will narrate your document with a {voiceSettings.style || selectedVoice?.style} style
                     </p>
                   </div>
                 </div>
@@ -504,7 +504,7 @@ export default function UploadPage() {
                   <div>
                     <h3 className="text-3xl font-bold text-white mb-3 font-outfit tracking-tight">Generating Your Audiobook</h3>
                     <p className="text-gray-300 text-lg font-inter max-w-2xl mx-auto">
-                      We're converting "{selectedFile?.name}" using {selectedVoice?.name}'s voice with {voiceSettings.style || selectedVoice.style} style
+                      We're converting "{selectedFile?.name}" using {selectedVoice?.name}'s voice with {voiceSettings.style || selectedVoice?.style} style
                     </p>
                   </div>
 
@@ -587,7 +587,7 @@ export default function UploadPage() {
                       </div>
                       <div>
                         <div className="text-sm text-gray-400 mb-1">Voice</div>
-                        <div className="text-white font-semibold font-outfit">{selectedVoice?.name} ({voiceSettings.style || selectedVoice.style})</div>
+                        <div className="text-white font-semibold font-outfit">{selectedVoice?.name} ({voiceSettings.style || selectedVoice?.style})</div>
                       </div>
                     </div>
                   </div>
