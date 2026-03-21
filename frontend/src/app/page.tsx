@@ -51,11 +51,11 @@ export default function Home() {
                       className="relative px-8 py-4 text-white font-light transition-all duration-300 hover:scale-105"
                       style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em' }}
                       onMouseEnter={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '100%';
                       }}
                       onMouseLeave={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '0';
                       }}
                     >
@@ -69,11 +69,11 @@ export default function Home() {
                       className="relative px-8 py-4 text-gray-400 font-light transition-all duration-300 hover:scale-105 hover:text-white"
                       style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em' }}
                       onMouseEnter={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '100%';
                       }}
                       onMouseLeave={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '0';
                       }}
                     >
@@ -90,11 +90,11 @@ export default function Home() {
                       className="relative px-8 py-4 text-white font-light transition-all duration-300 hover:scale-105"
                       style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em' }}
                       onMouseEnter={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '100%';
                       }}
                       onMouseLeave={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '0';
                       }}
                     >
@@ -108,11 +108,11 @@ export default function Home() {
                       className="relative px-8 py-4 text-gray-400 font-light transition-all duration-300 hover:scale-105 hover:text-white"
                       style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em' }}
                       onMouseEnter={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '100%';
                       }}
                       onMouseLeave={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '0';
                       }}
                     >
@@ -524,11 +524,11 @@ export default function Home() {
                     <div className="absolute inset-0 bg-white/10 backdrop-blur-lg rounded-full border border-white/20 shadow-xl" />
                     <button className={`w-full py-3 transition-all duration-300 ${plan.highlighted ? 'text-white hover:scale-105' : 'text-gray-400 hover:text-white hover:scale-105'} font-brand-light`} style={{ letterSpacing: '0.05em' }}
                       onMouseEnter={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '100%';
                       }}
                       onMouseLeave={(e) => {
-                        const underline = e.currentTarget.querySelector('.button-underline');
+                        const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                         if (underline) underline.style.width = '0';
                       }}
                     >

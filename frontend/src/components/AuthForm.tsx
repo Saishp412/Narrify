@@ -75,11 +75,11 @@ export default function AuthForm({ mode, onSubmit }: AuthFormProps) {
           className="relative px-12 py-4 text-white font-light transition-all duration-300 hover:scale-105 bg-white/10 backdrop-blur-lg border border-white/20 rounded-full shadow-xl"
           style={{ fontFamily: 'Inter, sans-serif', letterSpacing: '0.05em' }}
           onMouseEnter={(e) => {
-            const underline = e.currentTarget.querySelector('.button-underline');
+            const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
             if (underline) underline.style.width = '100%';
           }}
           onMouseLeave={(e) => {
-            const underline = e.currentTarget.querySelector('.button-underline');
+            const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
             if (underline) underline.style.width = '0';
           }}
         >

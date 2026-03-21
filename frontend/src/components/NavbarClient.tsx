@@ -60,11 +60,11 @@ export default function NavbarClient() {
                       : "text-gray-400 hover:text-white"
                   }`}
                   onMouseEnter={(e) => {
-                    const underline = e.currentTarget.querySelector('.button-underline');
+                    const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                     if (underline) underline.style.width = '100%';
                   }}
                   onMouseLeave={(e) => {
-                    const underline = e.currentTarget.querySelector('.button-underline');
+                    const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                     if (underline && !isActive(item.href)) underline.style.width = '0';
                   }}
                 >
@@ -140,13 +140,13 @@ export default function NavbarClient() {
                     onMouseEnter={(e) => {
                       const underline = e.currentTarget.querySelector(
                         ".button-underline"
-                      );
+                      ) as HTMLElement;
                       if (underline) underline.style.width = "100%";
                     }}
                     onMouseLeave={(e) => {
                       const underline = e.currentTarget.querySelector(
                         ".button-underline"
-                      );
+                      ) as HTMLElement;
                       if (underline) underline.style.width = "0";
                     }}
                   >
@@ -164,13 +164,13 @@ export default function NavbarClient() {
                     onMouseEnter={(e) => {
                       const underline = e.currentTarget.querySelector(
                         ".button-underline"
-                      );
+                      ) as HTMLElement;
                       if (underline) underline.style.width = "100%";
                     }}
                     onMouseLeave={(e) => {
                       const underline = e.currentTarget.querySelector(
                         ".button-underline"
-                      );
+                      ) as HTMLElement;
                       if (underline) underline.style.width = "0";
                     }}
                   >
