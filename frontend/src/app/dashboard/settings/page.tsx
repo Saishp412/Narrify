@@ -624,7 +624,7 @@ export default function SettingsPage() {
                       {settings.profile.fullName.charAt(0).toUpperCase() || "U"}
                     </div>
                     <div>
-                      <button className="px-6 py-3 bg-gradient-primary hover:scale-105 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-primary-500/25 mb-4">
+                      <button className="px-6 py-3 bg-gradient-primary hover:scale-105 text-white font-semibold rounded-xl transition-all duration-300 shadow-lg shadow-primary-500/25">
                         Change Avatar
                       </button>
                       <p className="text-gray-400 text-sm mt-2">JPG, PNG or GIF. Max size 2MB</p>
@@ -775,27 +775,27 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">Playback Options</h3>
                     {[
                       {
-                        key: 'autoPlay',
+                        key: 'autoPlay' as const,
                         title: 'Auto-play next episode',
                         description: 'Automatically play the next audiobook when current one ends'
                       },
                       {
-                        key: 'crossfade',
+                        key: 'crossfade' as const,
                         title: 'Crossfade tracks',
                         description: 'Smoothly transition between audiobooks'
                       },
                       {
-                        key: 'gaplessPlayback',
+                        key: 'gaplessPlayback' as const,
                         title: 'Gapless playback',
                         description: 'Remove silence between tracks'
                       },
                       {
-                        key: 'showLyrics',
+                        key: 'showLyrics' as const,
                         title: 'Show lyrics',
                         description: 'Display lyrics when available'
                       },
                       {
-                        key: 'normalizeVolume',
+                        key: 'normalizeVolume' as const,
                         title: 'Normalize volume',
                         description: 'Set the same volume level for all audiobooks'
                       }
@@ -808,14 +808,14 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            preferences: { ...prev.preferences, [item.key]: !prev.preferences[item.key as keyof typeof prev.preferences] }
+                            preferences: { ...prev.preferences, [item.key]: !prev.preferences[item.key] }
                           }))}
                           className={`w-14 h-8 rounded-full transition-colors duration-300 ${
-                            settings.preferences[item.key as keyof typeof prev.preferences] ? 'bg-primary-500' : 'bg-gray-600'
+                            settings.preferences[item.key] ? 'bg-primary-500' : 'bg-gray-600'
                           }`}
                         >
                           <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                            settings.preferences[item.key as keyof typeof prev.preferences] ? 'translate-x-7' : 'translate-x-1'
+                            settings.preferences[item.key] ? 'translate-x-7' : 'translate-x-1'
                           }`} />
                         </button>
                       </div>
@@ -838,27 +838,27 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">General Notifications</h3>
                     {[
                       {
-                        key: 'emailNotifications',
+                        key: 'emailNotifications' as const,
                         title: 'Email Notifications',
                         description: 'Receive updates and alerts via email'
                       },
                       {
-                        key: 'pushNotifications',
+                        key: 'pushNotifications' as const,
                         title: 'Push Notifications',
                         description: 'Get real-time notifications in your browser'
                       },
                       {
-                        key: 'conversionComplete',
+                        key: 'conversionComplete' as const,
                         title: 'Conversion Complete',
                         description: 'Notify when document conversion is finished'
                       },
                       {
-                        key: 'weeklyReport',
+                        key: 'weeklyReport' as const,
                         title: 'Weekly Report',
                         description: 'Get a summary of your weekly activity'
                       },
                       {
-                        key: 'newFeatures',
+                        key: 'newFeatures' as const,
                         title: 'New Features',
                         description: 'Be the first to know about new features and updates'
                       }
@@ -871,14 +871,14 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            notifications: { ...prev.notifications, [item.key]: !prev.notifications[item.key as keyof typeof prev.notifications] }
+                            notifications: { ...prev.notifications, [item.key]: !prev.notifications[item.key] }
                           }))}
                           className={`w-14 h-8 rounded-full transition-colors duration-300 ${
-                            settings.notifications[item.key as keyof typeof prev.notifications] ? 'bg-primary-500' : 'bg-gray-600'
+                            settings.notifications[item.key] ? 'bg-primary-500' : 'bg-gray-600'
                           }`}
                         >
                           <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                            settings.notifications[item.key as keyof typeof prev.notifications] ? 'translate-x-7' : 'translate-x-1'
+                            settings.notifications[item.key] ? 'translate-x-7' : 'translate-x-1'
                           }`} />
                         </button>
                       </div>
@@ -889,27 +889,27 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">Social Notifications</h3>
                     {[
                       {
-                        key: 'friendRequests',
+                        key: 'friendRequests' as const,
                         title: 'Friend Requests',
                         description: 'Get notified when someone wants to follow you'
                       },
                       {
-                        key: 'playlistUpdates',
+                        key: 'playlistUpdates' as const,
                         title: 'Playlist Updates',
                         description: 'Notify when playlists you follow are updated'
                       },
                       {
-                        key: 'newReleases',
+                        key: 'newReleases' as const,
                         title: 'New Releases',
                         description: 'Get alerts for new audiobook releases from your favorite authors'
                       },
                       {
-                        key: 'concertAlerts',
+                        key: 'concertAlerts' as const,
                         title: 'Concert Alerts',
                         description: 'Receive notifications about live events and performances'
                       },
                       {
-                        key: 'socialActivity',
+                        key: 'socialActivity' as const,
                         title: 'Social Activity',
                         description: 'Get notified about likes, comments, and shares'
                       }
@@ -922,14 +922,14 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            notifications: { ...prev.notifications, [item.key]: !prev.notifications[item.key as keyof typeof prev.notifications] }
+                            notifications: { ...prev.notifications, [item.key]: !prev.notifications[item.key] }
                           }))}
                           className={`w-14 h-8 rounded-full transition-colors duration-300 ${
-                            settings.notifications[item.key as keyof typeof prev.notifications] ? 'bg-primary-500' : 'bg-gray-600'
+                            settings.notifications[item.key] ? 'bg-primary-500' : 'bg-gray-600'
                           }`}
                         >
                           <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                            settings.notifications[item.key as keyof typeof prev.notifications] ? 'translate-x-7' : 'translate-x-1'
+                            settings.notifications[item.key] ? 'translate-x-7' : 'translate-x-1'
                           }`} />
                         </button>
                       </div>
@@ -972,42 +972,42 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">Data Sharing</h3>
                     {[
                       {
-                        key: 'shareListeningData',
+                        key: 'shareListeningData' as const,
                         title: 'Share Listening Data',
                         description: 'Allow us to use your listening habits to improve recommendations'
                       },
                       {
-                        key: 'analyticsTracking',
+                        key: 'analyticsTracking' as const,
                         title: 'Analytics Tracking',
                         description: 'Help us improve the service by allowing anonymous usage tracking'
                       },
                       {
-                        key: 'personalizedRecommendations',
+                        key: 'personalizedRecommendations' as const,
                         title: 'Personalized Recommendations',
                         description: 'Get personalized audiobook recommendations based on your preferences'
                       },
                       {
-                        key: 'publicPlaylists',
+                        key: 'publicPlaylists' as const,
                         title: 'Public Playlists',
                         description: 'Allow others to see and follow your playlists'
                       },
                       {
-                        key: 'followingList',
+                        key: 'followingList' as const,
                         title: 'Following List',
                         description: 'Make your following list public'
                       },
                       {
-                        key: 'listeningActivity',
+                        key: 'listeningActivity' as const,
                         title: 'Listening Activity',
                         description: 'Share your listening activity with followers'
                       },
                       {
-                        key: 'allowMessages',
+                        key: 'allowMessages' as const,
                         title: 'Allow Messages',
                         description: 'Let other users send you messages'
                       },
                       {
-                        key: 'showOnlineStatus',
+                        key: 'showOnlineStatus' as const,
                         title: 'Show Online Status',
                         description: 'Let others see when you\'re online'
                       }
@@ -1020,14 +1020,14 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            privacy: { ...prev.privacy, [item.key]: !prev.privacy[item.key as keyof typeof prev.privacy] }
+                            privacy: { ...prev.privacy, [item.key]: !prev.privacy[item.key] }
                           }))}
                           className={`w-14 h-8 rounded-full transition-colors duration-300 ${
-                            settings.privacy[item.key as keyof typeof prev.privacy] ? 'bg-primary-500' : 'bg-gray-600'
+                            settings.privacy[item.key] ? 'bg-primary-500' : 'bg-gray-600'
                           }`}
                         >
                           <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                            settings.privacy[item.key as keyof typeof prev.privacy] ? 'translate-x-7' : 'translate-x-1'
+                            settings.privacy[item.key] ? 'translate-x-7' : 'translate-x-1'
                           }`} />
                         </button>
                       </div>
@@ -1058,22 +1058,22 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">Offline Mode</h3>
                     {[
                       {
-                        key: 'offlineMode',
+                        key: 'offlineMode' as const,
                         title: 'Offline Mode',
                         description: 'Enable offline listening for downloaded content'
                       },
                       {
-                        key: 'downloadOnCellular',
+                        key: 'downloadOnCellular' as const,
                         title: 'Download on Cellular',
                         description: 'Allow downloads when using mobile data'
                       },
                       {
-                        key: 'automaticCleanup',
+                        key: 'automaticCleanup' as const,
                         title: 'Automatic Cleanup',
                         description: 'Remove old downloads automatically when storage is full'
                       },
                       {
-                        key: 'syncAcrossDevices',
+                        key: 'syncAcrossDevices' as const,
                         title: 'Sync Across Devices',
                         description: 'Keep your listening position synced across all devices'
                       }
@@ -1086,14 +1086,14 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            devices: { ...prev.devices, [item.key]: !prev.devices[item.key as keyof typeof prev.devices] }
+                            devices: { ...prev.devices, [item.key]: !prev.devices[item.key] }
                           }))}
                           className={`w-14 h-8 rounded-full transition-colors duration-300 ${
-                            settings.devices[item.key as keyof typeof prev.devices] ? 'bg-primary-500' : 'bg-gray-600'
+                            settings.devices[item.key] ? 'bg-primary-500' : 'bg-gray-600'
                           }`}
                         >
                           <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                            settings.devices[item.key as keyof typeof prev.devices] ? 'translate-x-7' : 'translate-x-1'
+                            settings.devices[item.key] ? 'translate-x-7' : 'translate-x-1'
                           }`} />
                         </button>
                       </div>
@@ -1160,17 +1160,17 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">Connected Accounts</h3>
                     {[
                       {
-                        key: 'connectSpotify',
+                        key: 'connectSpotify' as const,
                         title: 'Spotify',
                         description: 'Connect your Spotify account to import playlists'
                       },
                       {
-                        key: 'connectApple',
+                        key: 'connectApple' as const,
                         title: 'Apple Music',
                         description: 'Connect your Apple Music account'
                       },
                       {
-                        key: 'connectGoogle',
+                        key: 'connectGoogle' as const,
                         title: 'Google',
                         description: 'Connect your Google account for easy login'
                       }
@@ -1183,15 +1183,15 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            social: { ...prev.social, [item.key]: !prev.social[item.key as keyof typeof prev.social] }
+                            social: { ...prev.social, [item.key]: !prev.social[item.key] }
                           }))}
                           className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                            settings.social[item.key as keyof typeof prev.social]
+                            settings.social[item.key]
                               ? 'bg-red-500 hover:bg-red-600 text-white'
                               : 'bg-primary-500 hover:bg-primary-600 text-white'
                           }`}
                         >
-                          {settings.social[item.key as keyof typeof prev.social] ? 'Disconnect' : 'Connect'}
+                          {settings.social[item.key] ? 'Disconnect' : 'Connect'}
                         </button>
                       </div>
                     ))}
@@ -1201,17 +1201,17 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">Social Sharing</h3>
                     {[
                       {
-                        key: 'shareToFacebook',
+                        key: 'shareToFacebook' as const,
                         title: 'Facebook',
                         description: 'Share your listening activity on Facebook'
                       },
                       {
-                        key: 'shareToTwitter',
+                        key: 'shareToTwitter' as const,
                         title: 'Twitter/X',
                         description: 'Share your listening activity on Twitter'
                       },
                       {
-                        key: 'shareToInstagram',
+                        key: 'shareToInstagram' as const,
                         title: 'Instagram',
                         description: 'Share stories about your favorite audiobooks'
                       }
@@ -1224,14 +1224,14 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            social: { ...prev.social, [item.key]: !prev.social[item.key as keyof typeof prev.social] }
+                            social: { ...prev.social, [item.key]: !prev.social[item.key] }
                           }))}
                           className={`w-14 h-8 rounded-full transition-colors duration-300 ${
-                            settings.social[item.key as keyof typeof prev.social] ? 'bg-primary-500' : 'bg-gray-600'
+                            settings.social[item.key] ? 'bg-primary-500' : 'bg-gray-600'
                           }`}
                         >
                           <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                            settings.social[item.key as keyof typeof prev.social] ? 'translate-x-7' : 'translate-x-1'
+                            settings.social[item.key] ? 'translate-x-7' : 'translate-x-1'
                           }`} />
                         </button>
                       </div>
@@ -1242,12 +1242,12 @@ export default function SettingsPage() {
                     <h3 className="text-xl font-semibold text-white">Profile Settings</h3>
                     {[
                       {
-                        key: 'publicProfile',
+                        key: 'publicProfile' as const,
                         title: 'Public Profile',
                         description: 'Make your profile visible to everyone'
                       },
                       {
-                        key: 'allowFollowers',
+                        key: 'allowFollowers' as const,
                         title: 'Allow Followers',
                         description: 'Let other users follow your activity'
                       }
@@ -1260,14 +1260,14 @@ export default function SettingsPage() {
                         <button
                           onClick={() => setSettings(prev => ({
                             ...prev,
-                            social: { ...prev.social, [item.key]: !prev.social[item.key as keyof typeof prev.social] }
+                            social: { ...prev.social, [item.key]: !prev.social[item.key] }
                           }))}
                           className={`w-14 h-8 rounded-full transition-colors duration-300 ${
-                            settings.social[item.key as keyof typeof prev.social] ? 'bg-primary-500' : 'bg-gray-600'
+                            settings.social[item.key] ? 'bg-primary-500' : 'bg-gray-600'
                           }`}
                         >
                           <div className={`w-6 h-6 bg-white rounded-full transition-transform duration-300 ${
-                            settings.social[item.key as keyof typeof prev.social] ? 'translate-x-7' : 'translate-x-1'
+                            settings.social[item.key] ? 'translate-x-7' : 'translate-x-1'
                           }`} />
                         </button>
                       </div>
