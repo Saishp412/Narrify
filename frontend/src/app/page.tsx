@@ -140,7 +140,8 @@ export default function Home() {
                       alt={`User ${index + 1}`}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        e.target.src = `data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='48' height='48' fill='%2314b8a6'/%3E%3Ccircle cx='24' cy='20' r='8' fill='%23f3f4f6'/%3E%3Cpath d='M8 40c0-8 7-14 16-14s16 6 16 14' fill='%23f3f4f6'/%3E%3C/svg%3E`;
+                        const target = e.target as HTMLImageElement;
+                        target.src = `data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='48' height='48' fill='%2314b8a6'/%3E%3Ccircle cx='24' cy='20' r='8' fill='%23f3f4f6'/%3E%3Cpath d='M8 40c0-8 7-14 16-14s16 6 16 14' fill='%23f3f4f6'/%3E%3C/svg%3E`;
                       }}
                     />
                     <div className="absolute inset-0 border-2 border-primary-500/30 rounded-full" />

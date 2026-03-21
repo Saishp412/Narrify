@@ -85,7 +85,8 @@ export default function LoginPage() {
                       alt={`User ${index + 1}`}
                       className="w-full h-full object-cover"
                       onError={(e) => {
-                        e.target.src = `data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='48' height='48' fill='%2314b8a6'/%3E%3Ccircle cx='24' cy='20' r='8' fill='%23f3f4f6'/%3E%3Cpath d='M8 40c0-8 7-14 16-14s16 6 16 14' fill='%23f3f4f6'/%3E%3C/svg%3E`;
+                        const target = e.target as HTMLImageElement;
+                        target.src = `data:image/svg+xml,%3Csvg width='48' height='48' viewBox='0 0 48 48' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='48' height='48' fill='%2314b8a6'/%3E%3Ccircle cx='24' cy='20' r='8' fill='%23f3f4f6'/%3E%3Cpath d='M8 40c0-8 7-14 16-14s16 6 16 14' fill='%23f3f4f6'/%3E%3C/svg%3E`;
                       }}
                     />
                     <div className="absolute inset-0 border-2 border-primary-500/30 rounded-full" />
@@ -102,8 +103,8 @@ export default function LoginPage() {
           <div className="hidden lg:block animate-slide-up">
             <div className="relative">
               <div className="absolute inset-0 bg-gradient-primary opacity-20 rounded-3xl blur-3xl animate-pulse-slow" />
-              <div className="relative h-[600px] rounded-3xl border border-primary-500/20 bg-dark-card/50 backdrop-blur-sm overflow-hidden">
-                <div className="absolute inset-0 bg-gradient-to-br from-primary-500/10 to-accent-500/10" />
+              <div className="relative h-150 rounded-3xl border border-primary-500/20 bg-dark-card/50 backdrop-blur-sm overflow-hidden">
+                <div className="absolute inset-0 bg-linear-to-br from-primary-500/10 to-accent-500/10" />
                 
                 {/* Login Form Container */}
                 <div className="p-8 h-full flex flex-col justify-center">
@@ -118,7 +119,7 @@ export default function LoginPage() {
                     <AuthForm mode="login" onSubmit={handleLogin} />
 
                     <div className="mt-8 text-center text-sm text-gray-400">
-                      Don't have an account?{" "}
+                      Don&apos;t have an account?{" "}
                       <Link
                         href="/auth/register"
                         className="create-link font-brand-light"
@@ -152,16 +153,16 @@ export default function LoginPage() {
               <AuthForm mode="login" onSubmit={handleLogin} />
 
               <div className="mt-8 text-center text-sm text-gray-400">
-                Don't have an account?{" "}
+                Don&apos;t have an account?{" "}
                 <Link
                   href="/auth/register"
                   className="relative group py-2 text-primary-400 hover:text-primary-300 transition-all duration-300 font-brand-light inline-block"
                   onMouseEnter={(e) => {
-                    const underline = e.currentTarget.querySelector('.button-underline');
+                    const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                     if (underline) underline.style.width = '100%';
                   }}
                   onMouseLeave={(e) => {
-                    const underline = e.currentTarget.querySelector('.button-underline');
+                    const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                     if (underline) underline.style.width = '0';
                   }}
                 >

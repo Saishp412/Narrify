@@ -51,8 +51,9 @@ export default function AboutPage() {
                     alt="Narrify Team Working Together"
                     className="w-full h-full object-cover"
                     style={{ filter: 'brightness(1.1) contrast(1.05)' }}
-                    onError={(e) => {
-                      e.target.src = "data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='400' fill='%230a0f1c'/%3E%3Crect x='50' y='100' width='300' height='200' rx='10' fill='%231a202c' opacity='0.8'/%3E%3Crect x='70' y='120' width='260' height='160' rx='8' fill='%2314b8a6' opacity='0.9'/%3E%3Ccircle cx='150' cy='200' r='30' fill='%23f97316' opacity='0.7'/%3E%3Ccircle cx='250' cy='200' r='30' fill='%23f97316' opacity='0.7'/%3E%3Cpath d='M130 200L170 200M230 200L270 200' stroke='%23f3f4f6' stroke-width='2'/%3E%3Ctext x='200' y='220' font-family='Arial' font-size='14' fill='%23f3f4f6' text-anchor='middle'%3EAI-Powered Content Creation%3C/text%3E%3C/svg%3E";
+                    onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                      const target = e.currentTarget;
+                      target.src = "data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='400' fill='%230a0f1c'/%3E%3Crect x='50' y='100' width='300' height='200' rx='10' fill='%231a202c' opacity='0.8'/%3E%3Crect x='70' y='120' width='260' height='160' rx='8' fill='%2314b8a6' opacity='0.9'/%3E%3Ccircle cx='150' cy='200' r='30' fill='%23f97316' opacity='0.7'/%3E%3Ccircle cx='250' cy='200' r='30' fill='%23f97316' opacity='0.7'/%3E%3Cpath d='M130 200L170 200M230 200L270 200' stroke='%23f3f4f6' stroke-width='2'/%3E%3Ctext x='200' y='220' font-family='Arial' font-size='14' fill='%23f3f4f6' text-anchor='middle'%3EAI-Powered Content Creation%3C/text%3E%3C/svg%3E";
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/80 via-transparent to-transparent" />
@@ -217,8 +218,9 @@ export default function AboutPage() {
                     alt="AI Technology Visualization"
                     className="w-full h-full object-cover"
                     style={{ filter: 'brightness(1.1) contrast(1.05)' }}
-                    onError={(e) => {
-                      e.target.src = "data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='400' fill='%230a0f1c'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23f97316' opacity='0.3'/%3E%3Ccircle cx='200' cy='200' r='60' fill='%2314b8a6' opacity='0.5'/%3E%3Cpath d='M200 140L200 260M140 200L260 200' stroke='%23f3f4f6' stroke-width='3'/%3E%3Ctext x='200' y='350' font-family='Arial' font-size='16' fill='%23f3f4f6' text-anchor='middle'%3EAI-Powered Innovation%3C/text%3E%3C/svg%3E";
+                    onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
+                      const target = e.currentTarget;
+                      target.src = "data:image/svg+xml,%3Csvg width='400' height='400' viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='400' height='400' fill='%230a0f1c'/%3E%3Ccircle cx='200' cy='200' r='80' fill='%23f97316' opacity='0.3'/%3E%3Ccircle cx='200' cy='200' r='60' fill='%2314b8a6' opacity='0.5'/%3E%3Cpath d='M200 140L200 260M140 200L260 200' stroke='%23f3f4f6' stroke-width='3'/%3E%3Ctext x='200' y='350' font-family='Arial' font-size='16' fill='%23f3f4f6' text-anchor='middle'%3EAI-Powered Innovation%3C/text%3E%3C/svg%3E";
                     }}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-dark-primary/80 via-transparent to-transparent" />
