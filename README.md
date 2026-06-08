@@ -143,8 +143,4 @@ Navigate to `http://localhost:3000` in your browser.
 * **CDN Edge Delivery**: All generated audio files are served via Cloudinary's global CDN, drastically reducing bandwidth load on the origin server and eliminating buffering for end-users.
 * **Optimized State Management**: The React frontend utilizes optimized state lifting and React hooks to prevent unnecessary re-renders during active audio playback and complex dashboard navigation.
 
----
 
-<div align="center">
-  <i>Developed by Saish Patil</i>
-</div>
