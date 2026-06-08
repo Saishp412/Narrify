@@ -21,6 +21,13 @@ const userSchema = new mongoose.Schema(
       type: String,
       default: "default_en",
     },
+    bookmarkedAudiobooks: [{
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Audio'
+    }],
+    bookmarkedDiscoveryBooks: [{
+      type: String
+    }],
   },
   { timestamps: true }
 );

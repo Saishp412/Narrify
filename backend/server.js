@@ -16,7 +16,7 @@ const app = express()
 
 // 1️⃣ Middleware first
 app.use(cors({
-  origin: ['http://localhost:3000', 'http://localhost:3001'],
+  origin: function(origin, callback) { callback(null, true); },
   credentials: true
 }))
 app.use(express.json())
@@ -33,7 +33,8 @@ app.use("/api/audio", require("./routes/audio.routes"));
 app.use("/api/voices", require("./routes/voice.routes"));
 app.use("/api/tts", require("./routes/tts.routes"));
 app.use("/api/user", require("./routes/user.routes"));
-
+app.use("/api/analytics", require("./routes/analytics.routes"));
+app.use("/api/bookmarks", require("./routes/bookmarks.routes"));
 
 
 

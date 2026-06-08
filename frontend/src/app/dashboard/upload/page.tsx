@@ -21,13 +21,12 @@ export default function UploadPage() {
   const [estimatedTime, setEstimatedTime] = useState(0);
 
   // ---------- File Selection ----------
-  const handleFileSelect = () => {
-    if (!fileInputRef.current?.files?.length) {
-      alert("Please select a file first");
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (!e.target.files?.length) {
       return;
     }
 
-    const file = fileInputRef.current.files[0];
+    const file = e.target.files[0];
     
     // Validate file type
     if (file.type !== "application/pdf") {
@@ -93,7 +92,8 @@ export default function UploadPage() {
         });
       }, 1000);
       
-      const res = await fetch("http://localhost:5000/api/upload/pdf", {
+      const { API_BASE } = await import('@/app/utils/api');
+      const res = await fetch(`${API_BASE}/upload/pdf`, {
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -236,8 +236,11 @@ export default function UploadPage() {
                       </p>
                     </div>
 
-                    <div className="border-2 border-dashed border-white/20 rounded-2xl p-8 text-center hover:border-white/40 transition-colors duration-300 bg-white/5">
-                      <div className="w-16 h-16 bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <div 
+                      className="border-2 border-dashed border-white/20 rounded-2xl p-8 text-center hover:border-white/40 transition-colors duration-300 bg-white/5 cursor-pointer"
+                      onClick={() => fileInputRef.current?.click()}
+                    >
+                      <div className="w-16 h-16 bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-2xl flex items-center justify-center mx-auto mb-4 pointer-events-none">
                         <svg className="w-8 h-8 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                         </svg>
@@ -248,19 +251,19 @@ export default function UploadPage() {
                         accept=".pdf"
                         className="hidden"
                         id="file-upload"
-                        onChange={handleFileSelect}
+                        onChange={handleFileChange}
                       />
-                      <label htmlFor="file-upload" className="cursor-pointer">
+                      <div className="pointer-events-none">
                         <span className="text-white font-medium mb-2 block">Click to upload or drag and drop</span>
                         <span className="text-gray-400 text-sm">PDF files only (MAX. 25MB)</span>
-                      </label>
+                      </div>
                     </div>
 
                     <button
-                      onClick={handleFileSelect}
+                      onClick={() => fileInputRef.current?.click()}
                       className="w-full py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-2xl font-semibold font-outfit tracking-tight hover:scale-105 transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40 mb-8"
                     >
-                      Select File & Continue
+                      Browse Files
                     </button>
                   </div>
 
@@ -579,22 +582,31 @@ export default function UploadPage() {
                     </p>
                   </div>
 
-                  <div className="bg-gradient-to-br from-primary-500/10 to-accent-500/10 rounded-2xl p-6 border border-white/10">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
-                      <div>
-                        <div className="text-sm text-gray-400 mb-1">Document</div>
-                        <div className="text-white font-semibold font-outfit">{selectedFile?.name}</div>
+                  <div className="bg-white/5 rounded-2xl p-6 border border-white/10 max-w-3xl mx-auto mt-8">
+                    <div className="flex flex-col md:flex-row items-center justify-center gap-8 mb-6">
+                      <div className="flex-1 text-center md:text-right">
+                        <div className="text-sm text-gray-400 mb-1 font-inter uppercase tracking-wider">Document</div>
+                        <div className="text-white font-semibold font-outfit truncate" title={selectedFile?.name}>{selectedFile?.name}</div>
                       </div>
-                      <div>
-                        <div className="text-sm text-gray-400 mb-1">Voice</div>
+                      
+                      <div className="hidden md:flex flex-col items-center justify-center">
+                        <div className="w-1.5 h-1.5 rounded-full bg-primary-500 mb-1" />
+                        <div className="w-px h-8 bg-white/20" />
+                        <div className="w-1.5 h-1.5 rounded-full bg-accent-500 mt-1" />
+                      </div>
+
+                      <div className="flex-1 text-center md:text-left">
+                        <div className="text-sm text-gray-400 mb-1 font-inter uppercase tracking-wider">Voice</div>
                         <div className="text-white font-semibold font-outfit">{selectedVoice?.name} ({voiceSettings.style || selectedVoice?.style})</div>
                       </div>
                     </div>
+                    
+                    <div className="pt-6 border-t border-white/10">
+                      <audio controls src={audioUrl} className="w-full max-w-2xl mx-auto" />
+                    </div>
                   </div>
 
-                  <audio controls src={audioUrl} className="w-full max-w-2xl mx-auto" />
-
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
+                  <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
                     <button
                       onClick={() => router.push("/dashboard/audiobooks")}
                       className="px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-2xl font-semibold font-outfit tracking-tight hover:scale-105 transition-all duration-300 shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40"

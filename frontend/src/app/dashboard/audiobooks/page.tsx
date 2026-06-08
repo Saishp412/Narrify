@@ -24,6 +24,55 @@ export default function AudiobooksPage() {
   const audioRefs = useRef<Record<string, HTMLAudioElement | null>>({});
   const lastSavedRef = useRef<Record<string, number>>({});
   const [currentTime, setCurrentTime] = useState<string>("");
+  const [bookmarkedAudioIds, setBookmarkedAudioIds] = useState<string[]>([]);
+  
+  // Load bookmarks
+  useEffect(() => {
+    const fetchBookmarks = async () => {
+      const token = localStorage.getItem("token")
+      if (!token) return
+      try {
+        const { API_BASE } = await import('@/app/utils/api')
+        const res = await fetch(`${API_BASE}/bookmarks`, {
+          headers: { Authorization: `Bearer ${token}` }
+        })
+        if (res.ok) {
+          const data = await res.json()
+          // Extract just the IDs from the populated audiobooks
+          const ids = data.audiobooks.map((a: any) => typeof a === 'string' ? a : a._id)
+          setBookmarkedAudioIds(ids)
+        }
+      } catch (e) {}
+    }
+    fetchBookmarks()
+  }, [])
+
+  const handleToggleBookmark = async (e: React.MouseEvent, id: string) => {
+    e.stopPropagation()
+    const token = localStorage.getItem("token")
+    if (!token) return
+    try {
+      const { API_BASE } = await import('@/app/utils/api')
+      const res = await fetch(`${API_BASE}/bookmarks/toggle`, {
+        method: "POST",
+        headers: { 
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}` 
+        },
+        body: JSON.stringify({ type: "audio", id })
+      })
+      if (res.ok) {
+        const data = await res.json()
+        setBookmarkedAudioIds(prev => 
+          data.isBookmarked 
+            ? [...prev, id] 
+            : prev.filter(bId => bId !== id)
+        )
+      }
+    } catch (error) {
+      console.error("Error toggling bookmark", error)
+    }
+  }
 
   // ---------- STEP 1: Voice State ----------
   const [voices, setVoices] = useState<Voice[]>([]);
@@ -292,6 +341,16 @@ export default function AudiobooksPage() {
                       </svg>
                     </div>
                   </div>
+                  
+                  {/* Bookmark Button */}
+                  <button 
+                    className={`absolute top-4 right-4 p-2 rounded-full backdrop-blur-md transition-all z-10 ${bookmarkedAudioIds.includes(audio._id) ? 'bg-primary-500 text-white' : 'bg-white/10 text-white hover:bg-white/20'}`}
+                    onClick={(e) => handleToggleBookmark(e, audio._id)}
+                  >
+                    <svg className="w-4 h-4" fill={bookmarkedAudioIds.includes(audio._id) ? "currentColor" : "none"} stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
+                    </svg>
+                  </button>
 
                   {/* Enhanced Voice Selector */}
                   {voices.length > 0 && (

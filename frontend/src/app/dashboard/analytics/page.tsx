@@ -55,7 +55,8 @@ export default function AnalyticsPage() {
           return;
         }
 
-        const res = await fetch("http://localhost:5000/api/analytics", {
+        const { API_BASE } = await import('@/app/utils/api');
+        const res = await fetch(`${API_BASE}/analytics`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -84,52 +85,10 @@ export default function AnalyticsPage() {
     fetchAnalytics();
   }, []);
 
-  // Mock data for development
-  const mockData: AnalyticsData = {
-    totalListeningTime: 127,
-    booksCompleted: 8,
-    averageSessionDuration: 45,
-    mostListenedGenre: "Self-Help",
-    weeklyProgress: [2.5, 3.2, 1.8, 4.1, 2.9, 3.7, 4.5],
-    monthlyStats: [
-      { month: "Jan", hours: 89, books: 5 },
-      { month: "Feb", hours: 112, books: 7 },
-      { month: "Mar", hours: 127, books: 8 },
-      { month: "Apr", hours: 98, books: 6 },
-      { month: "May", hours: 145, books: 9 },
-      { month: "Jun", hours: 167, books: 11 },
-    ],
-    topAudiobooks: [
-      {
-        title: "Atomic Habits",
-        author: "James Clear",
-        totalTime: 5.5,
-        completionRate: 100,
-      },
-      {
-        title: "The Psychology of Money",
-        author: "Morgan Housel",
-        totalTime: 4.2,
-        completionRate: 85,
-      },
-      {
-        title: "Deep Work",
-        author: "Cal Newport",
-        totalTime: 3.8,
-        completionRate: 72,
-      },
-    ],
-    listeningPatterns: {
-      morning: 35,
-      afternoon: 25,
-      evening: 30,
-      night: 10,
-    },
-  };
-
-  const data = analyticsData || mockData;
+  const data = analyticsData;
 
   const formatHours = (hours: number) => {
+    if (!hours) return "0h";
     const h = Math.floor(hours);
     const m = Math.round((hours - h) * 60);
     return m > 0 ? `${h}h ${m}m` : `${h}h`;
@@ -140,6 +99,37 @@ export default function AnalyticsPage() {
     if (rate >= 70) return "text-yellow-400";
     return "text-red-400";
   };
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen p-6 lg:p-8 flex items-center justify-center" style={{ backgroundColor: '#0f172a' }}>
+        <div className="w-12 h-12 border-4 border-primary-500/30 border-t-primary-500 rounded-full animate-spin" />
+      </div>
+    );
+  }
+
+  if (!data) {
+    return (
+      <div className="min-h-screen p-6 lg:p-8 flex items-center justify-center" style={{ backgroundColor: '#0f172a' }}>
+        <div className="text-center bg-white/5 backdrop-blur-sm border border-white/10 rounded-3xl p-12 max-w-lg mx-auto">
+          <div className="w-20 h-20 bg-gradient-to-br from-primary-500/20 to-accent-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+            <svg className="w-10 h-10 text-primary-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </div>
+          <h2 className="text-2xl font-bold text-white mb-3 font-outfit">No Analytics Data Yet</h2>
+          <p className="text-gray-400 font-inter mb-8">
+            Upload your first document and start listening to generate insights and track your progress.
+          </p>
+          <a href="/dashboard/upload" className="inline-block px-8 py-4 bg-gradient-to-r from-primary-500 to-accent-500 text-white rounded-2xl font-semibold font-outfit hover:scale-105 transition-all duration-300">
+            Create an Audiobook
+          </a>
+        </div>
+      </div>
+    );
+  }
+
+
 
   return (
     <div className="min-h-screen p-6 lg:p-8 space-y-8" style={{ backgroundColor: '#0f172a' }}>
