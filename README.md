@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🎙️ Narrify: AI-Powered PDF to Audiobook Transformer
+# Narrify: AI-Powered PDF to Audiobook Transformer
 
 [![Next.js](https://img.shields.io/badge/Next.js-16.2-black?style=for-the-badge&logo=next.js&logoColor=white)](https://nextjs.org/)
 [![Node.js](https://img.shields.io/badge/Node.js-18.x-339933?style=for-the-badge&logo=node.js&logoColor=white)](https://nodejs.org/)
@@ -17,19 +17,19 @@
 
 ---
 
-## 📖 Overview
+## Overview
 
 **Narrify** is an advanced, full-stack AI SaaS application that bridges the gap between written content and auditory consumption. By leveraging cutting-edge text-to-speech AI (ElevenLabs), Narrify allows users to upload raw PDF documents and instantly convert them into lifelike, high-fidelity audiobooks. 
 
-### 🎯 The Problem
+### The Problem
 In today's fast-paced world, professionals, students, and avid learners struggle to find the time to sit down and read lengthy documents, research papers, or books. Traditional screen-reading causes eye strain and limits multitasking.
 
-### 💡 The Solution (Business Value)
+### The Solution (Business Value)
 Narrify transforms static text into dynamic audio, unlocking passive learning. Users can consume critical information while commuting, exercising, or working. By providing a beautiful, accessible, and highly efficient platform, Narrify boosts user productivity and information retention.
 
 ---
 
-## 📸 Application Screenshots
+## Application Screenshots
 
 | Feature | Screenshot |
 |---------|------------|
@@ -41,7 +41,7 @@ Narrify transforms static text into dynamic audio, unlocking passive learning. U
 
 ---
 
-## ⚙️ Technical Architecture
+## Technical Architecture
 
 Narrify employs a decoupled client-server architecture. The frontend is a highly interactive Next.js application, while the backend is an asynchronous Node.js/Express server designed to handle long-running heavy AI generation tasks without hitting serverless timeouts.
 
@@ -63,7 +63,7 @@ Narrify employs a decoupled client-server architecture. The frontend is a highly
 +-------------------+                       +-------------------+
 ```
 
-### 🧠 Core System Workflow:
+### Core System Workflow:
 1. **Document Ingestion:** User uploads a PDF via the Next.js client.
 2. **Data Extraction:** The Express server processes the PDF buffer and extracts clean text using `pdf-parse`.
 3. **AI Voice Synthesis:** The text is chunked and streamed to the **ElevenLabs API** for hyper-realistic voice generation.
@@ -72,7 +72,7 @@ Narrify employs a decoupled client-server architecture. The frontend is a highly
 
 ---
 
-## ✨ Key Features & Implementation Details
+## Key Features & Implementation Details
 
 * **Intelligent Document Parsing**: Extracts structural text from dense PDFs, handling varying encodings and formatting constraints seamlessly.
 * **Studio-Quality AI Voices**: Integrates ElevenLabs to offer a selection of human-like voices with dynamic intonation and pacing.
@@ -83,7 +83,7 @@ Narrify employs a decoupled client-server architecture. The frontend is a highly
 
 ---
 
-## 🚀 Installation & Local Development
+## Installation & Local Development
 
 ### Prerequisites
 * Node.js (v18+)
@@ -137,7 +137,7 @@ Navigate to `http://localhost:3000` in your browser.
 
 ---
 
-## 📈 Scalability & Performance Impact
+## Scalability & Performance Impact
 
 * **Microservices approach**: By separating the frontend (Vercel) from the heavy-lifting backend (Render), the application ensures rapid UI response times (Time-to-Interactive < 1.5s) while gracefully handling asynchronous audio rendering.
 * **CDN Edge Delivery**: All generated audio files are served via Cloudinary's global CDN, drastically reducing bandwidth load on the origin server and eliminating buffering for end-users.
@@ -146,5 +146,5 @@ Navigate to `http://localhost:3000` in your browser.
 ---
 
 <div align="center">
-  <i>Developed with ❤️ by Saish Patil</i>
+  <i>Developed by Saish Patil</i>
 </div>
