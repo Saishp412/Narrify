@@ -22,7 +22,7 @@ const CustomCursor = () => {
   const cursorLinkHoverRef = useRef<HTMLDivElement>(null);
   const cursorButtonHoverRef = useRef<HTMLDivElement>(null);
   const cursorTextRef = useRef<HTMLDivElement>(null);
-  const animationFrameRef = useRef<number>();
+  const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     setIsMounted(true);
