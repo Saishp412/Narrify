@@ -59,7 +59,7 @@ export default function DashboardPage() {
         
         // Fetch continue listening data
         const continueRes = await fetch(
-          `${API_BASE}/audio/continue",
+          `${API_BASE}/audio/continue`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -74,7 +74,7 @@ export default function DashboardPage() {
 
         // Fetch user stats
         const statsRes = await fetch(
-          `${API_BASE}/user/stats",
+          `${API_BASE}/user/stats`,
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -89,7 +89,7 @@ export default function DashboardPage() {
 
         // Fetch recent activity
         const activityRes = await fetch(
-          `${API_BASE}/user/activity",
+          `${API_BASE}/user/activity`,
           {
             headers: {
               Authorization: `Bearer ${token}`,

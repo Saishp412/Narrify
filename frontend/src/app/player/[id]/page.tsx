@@ -52,7 +52,7 @@ export default function PlayerPage() {
   useEffect(() => {
     const fetchVoices = async () => {
       try {
-        const res = await fetch(`${API_BASE}/voices");
+        const res = await fetch(`${API_BASE}/voices`);
         const data = await res.json();
 
         if (data.success && data.voices.length > 0) {

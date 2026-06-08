@@ -309,7 +309,7 @@ export default function SettingsPage() {
         }
 
         // Fetch user profile
-        const profileRes = await fetch(`${API_BASE}/user/profile", {
+        const profileRes = await fetch(`${API_BASE}/user/profile`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -325,7 +325,7 @@ export default function SettingsPage() {
         }
 
         // Fetch voices
-        const voicesRes = await fetch(`${API_BASE}/voices");
+        const voicesRes = await fetch(`${API_BASE}/voices`);
         if (voicesRes.ok) {
           const voicesData = await voicesRes.json();
           if (voicesData.success) {
@@ -347,7 +347,7 @@ export default function SettingsPage() {
     setSaving(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch(`${API_BASE}/user/settings", {
+      const res = await fetch(`${API_BASE}/user/settings`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

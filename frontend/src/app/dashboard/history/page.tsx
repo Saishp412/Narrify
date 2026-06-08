@@ -49,7 +49,7 @@ export default function HistoryPage() {
           return;
         }
 
-        const res = await fetch(`${API_BASE}/history", {
+        const res = await fetch(`${API_BASE}/history`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

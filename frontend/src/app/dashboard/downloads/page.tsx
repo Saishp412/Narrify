@@ -48,7 +48,7 @@ export default function DownloadsPage() {
           return;
         }
 
-        const res = await fetch(`${API_BASE}/downloads", {
+        const res = await fetch(`${API_BASE}/downloads`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 

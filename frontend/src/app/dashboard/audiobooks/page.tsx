@@ -98,7 +98,7 @@ export default function AudiobooksPage() {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const res = await fetch(`${API_BASE}/audio/my-library", {
+        const res = await fetch(`${API_BASE}/audio/my-library`, {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -126,7 +126,7 @@ export default function AudiobooksPage() {
   useEffect(() => {
     const fetchVoices = async () => {
       try {
-        const res = await fetch(`${API_BASE}/voices");
+        const res = await fetch(`${API_BASE}/voices`);
         const data = await res.json();
 
         if (data.success && data.voices.length > 0) {
@@ -155,7 +155,7 @@ export default function AudiobooksPage() {
     if (!token) return;
 
     try {
-      await fetch(`${API_BASE}/user/voice", {
+      await fetch(`${API_BASE}/user/voice`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

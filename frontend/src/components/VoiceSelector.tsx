@@ -45,7 +45,7 @@ export default function VoiceSelector({ onVoiceSelect, selectedVoiceId }: VoiceS
           throw new Error("Authentication required");
         }
 
-        const response = await fetch(`${API_BASE}/voices", {
+        const response = await fetch(`${API_BASE}/voices`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
