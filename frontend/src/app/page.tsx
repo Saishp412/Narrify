@@ -562,11 +562,11 @@ export default function Home() {
                     onClick={() => router.push("/auth/register")}
                     className="relative px-8 py-4 text-white font-brand-light transition-all duration-300 hover:scale-105"
                     onMouseEnter={(e) => {
-                      const underline = e.currentTarget.querySelector('.button-underline');
+                      const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                       if (underline) underline.style.width = '100%';
                     }}
                     onMouseLeave={(e) => {
-                      const underline = e.currentTarget.querySelector('.button-underline');
+                      const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                       if (underline) underline.style.width = '0';
                     }}
                   >
@@ -579,11 +579,11 @@ export default function Home() {
                     onClick={() => router.push("/dashboard")}
                     className="relative px-8 py-4 text-gray-400 font-brand-light transition-all duration-300 hover:scale-105 hover:text-white"
                     onMouseEnter={(e) => {
-                      const underline = e.currentTarget.querySelector('.button-underline');
+                      const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                       if (underline) underline.style.width = '100%';
                     }}
                     onMouseLeave={(e) => {
-                      const underline = e.currentTarget.querySelector('.button-underline');
+                      const underline = e.currentTarget.querySelector('.button-underline') as HTMLElement;
                       if (underline) underline.style.width = '0';
                     }}
                   >
