@@ -1,4 +1,6 @@
-"use client";
+"use client"
+import { API_BASE } from '../../utils/api';
+;
 
 import React, { useEffect, useRef, useState } from "react";
 import { usePlayer } from "@/context/PlayerContext";
@@ -96,7 +98,7 @@ export default function AudiobooksPage() {
         const token = localStorage.getItem("token");
         if (!token) return;
 
-        const res = await fetch("http://localhost:5000/api/audio/my-library", {
+        const res = await fetch(`${API_BASE}/audio/my-library", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -124,7 +126,7 @@ export default function AudiobooksPage() {
   useEffect(() => {
     const fetchVoices = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/voices");
+        const res = await fetch(`${API_BASE}/voices");
         const data = await res.json();
 
         if (data.success && data.voices.length > 0) {
@@ -153,7 +155,7 @@ export default function AudiobooksPage() {
     if (!token) return;
 
     try {
-      await fetch("http://localhost:5000/api/user/voice", {
+      await fetch(`${API_BASE}/user/voice", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
@@ -175,7 +177,7 @@ export default function AudiobooksPage() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    await fetch(`http://localhost:5000/api/audio/${audioId}/progress`, {
+    await fetch(`${API_BASE}/audio/${audioId}/progress`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -189,7 +191,7 @@ export default function AudiobooksPage() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    await fetch(`http://localhost:5000/api/audio/${audioId}/speed`, {
+    await fetch(`${API_BASE}/audio/${audioId}/speed`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",

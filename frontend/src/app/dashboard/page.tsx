@@ -1,4 +1,6 @@
-"use client";
+"use client"
+import { API_BASE } from '../utils/api';
+;
 
 import * as React from "react";
 import { useRouter } from "next/navigation";
@@ -57,7 +59,7 @@ export default function DashboardPage() {
         
         // Fetch continue listening data
         const continueRes = await fetch(
-          "http://localhost:5000/api/audio/continue",
+          `${API_BASE}/audio/continue",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -72,7 +74,7 @@ export default function DashboardPage() {
 
         // Fetch user stats
         const statsRes = await fetch(
-          "http://localhost:5000/api/user/stats",
+          `${API_BASE}/user/stats",
           {
             headers: {
               Authorization: `Bearer ${token}`,
@@ -87,7 +89,7 @@ export default function DashboardPage() {
 
         // Fetch recent activity
         const activityRes = await fetch(
-          "http://localhost:5000/api/user/activity",
+          `${API_BASE}/user/activity",
           {
             headers: {
               Authorization: `Bearer ${token}`,

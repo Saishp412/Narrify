@@ -1,4 +1,6 @@
-"use client";
+"use client"
+import { API_BASE } from '../../utils/api';
+;
 
 import React, { useEffect, useState } from "react";
 
@@ -47,7 +49,7 @@ export default function HistoryPage() {
           return;
         }
 
-        const res = await fetch("http://localhost:5000/api/history", {
+        const res = await fetch(`${API_BASE}/history", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

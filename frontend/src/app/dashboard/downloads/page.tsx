@@ -1,4 +1,6 @@
-"use client";
+"use client"
+import { API_BASE } from '../../utils/api';
+;
 
 import React, { useEffect, useState } from "react";
 import { usePlayer } from "@/context/PlayerContext";
@@ -46,7 +48,7 @@ export default function DownloadsPage() {
           return;
         }
 
-        const res = await fetch("http://localhost:5000/api/downloads", {
+        const res = await fetch(`${API_BASE}/downloads", {
           headers: { Authorization: `Bearer ${token}` },
         });
 

@@ -1,4 +1,6 @@
-"use client";
+"use client"
+import { API_BASE } from '../../utils/api';
+;
 
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
@@ -307,7 +309,7 @@ export default function SettingsPage() {
         }
 
         // Fetch user profile
-        const profileRes = await fetch("http://localhost:5000/api/user/profile", {
+        const profileRes = await fetch(`${API_BASE}/user/profile", {
           headers: { Authorization: `Bearer ${token}` },
         });
 
@@ -323,7 +325,7 @@ export default function SettingsPage() {
         }
 
         // Fetch voices
-        const voicesRes = await fetch("http://localhost:5000/api/voices");
+        const voicesRes = await fetch(`${API_BASE}/voices");
         if (voicesRes.ok) {
           const voicesData = await voicesRes.json();
           if (voicesData.success) {
@@ -345,7 +347,7 @@ export default function SettingsPage() {
     setSaving(true);
     try {
       const token = localStorage.getItem("token");
-      const res = await fetch("http://localhost:5000/api/user/settings", {
+      const res = await fetch(`${API_BASE}/user/settings", {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",

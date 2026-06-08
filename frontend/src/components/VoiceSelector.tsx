@@ -1,4 +1,6 @@
-"use client";
+"use client"
+import { API_BASE } from '../app/utils/api';
+;
 
 import * as React from "react";
 import { useState, useEffect } from "react";
@@ -43,7 +45,7 @@ export default function VoiceSelector({ onVoiceSelect, selectedVoiceId }: VoiceS
           throw new Error("Authentication required");
         }
 
-        const response = await fetch("http://localhost:5000/api/voices", {
+        const response = await fetch(`${API_BASE}/voices", {
           headers: {
             Authorization: `Bearer ${token}`,
           },

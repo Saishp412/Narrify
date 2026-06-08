@@ -1,4 +1,6 @@
-"use client";
+"use client"
+import { API_BASE } from '../../utils/api';
+;
 
 import React, { useEffect, useRef, useState } from "react";
 import { useParams } from "next/navigation";
@@ -33,7 +35,7 @@ export default function PlayerPage() {
       const token = localStorage.getItem("token");
       if (!token) return;
 
-      const res = await fetch(`http://localhost:5000/api/audio/${id}`, {
+      const res = await fetch(`${API_BASE}/audio/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -50,7 +52,7 @@ export default function PlayerPage() {
   useEffect(() => {
     const fetchVoices = async () => {
       try {
-        const res = await fetch("http://localhost:5000/api/voices");
+        const res = await fetch(`${API_BASE}/voices");
         const data = await res.json();
 
         if (data.success && data.voices.length > 0) {
@@ -72,7 +74,7 @@ export default function PlayerPage() {
     const token = localStorage.getItem("token");
     if (!token) return;
 
-    await fetch(`http://localhost:5000/api/audio/${audio._id}/progress`, {
+    await fetch(`${API_BASE}/audio/${audio._id}/progress`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
