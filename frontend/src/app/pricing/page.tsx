@@ -76,7 +76,7 @@ export default function PricingPage() {
     }
   ]);
 
-  const [selectedPlan, setSelectedPlan] = useState(null);
+  const [selectedPlan, setSelectedPlan] = useState<string | null>(null);
 
   return (
     <main 
