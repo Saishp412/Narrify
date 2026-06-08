@@ -1,5 +1,5 @@
 // frontend/app/utils/api.ts
-export const API_BASE = "http://localhost:5000/api"; // your backend URL
+export const API_BASE = process.env.NEXT_PUBLIC_API_URL || "http://localhost:5000/api";
 
 export async function registerUser(name: string, email: string, password: string) {
   const res = await fetch(`${API_BASE}/auth/register`, {
