@@ -33,11 +33,17 @@ Narrify transforms static text into dynamic audio, unlocking passive learning. U
 
 | Feature | Screenshot |
 |---------|------------|
-| **Landing Page** | ![Landing Page](screenshots/placeholder.png) |
-| **User Dashboard** | ![Dashboard Overview](screenshots/placeholder.png) |
-| **PDF Upload Flow** | ![Upload Process](screenshots/placeholder.png) |
-| **Audiobook Player** | ![Player UI](screenshots/placeholder.png) |
-| **Bookmarks & Analytics**| ![Bookmarks](screenshots/placeholder.png) |
+| **Landing Page** | ![Landing Page](Screenshots/Screenshot%20(245).png) |
+| **Authentication Page** | ![Authentication Page](Screenshots/Screenshot%20(246).png) |
+| **User Dashboard** | ![Dashboard Overview](Screenshots/Screenshot%20(255).png) |
+| **Discover (Recommendation of books)** | ![Discover](Screenshots/Screenshot%20(247).png) |
+| **My Audiobooks** | ![My Audiobooks](Screenshots/Screenshot%20(248).png) |
+| **Generate Audiobooks (Upload document)** | ![Generate Audiobooks](Screenshots/Screenshot%20(249).png) |
+| **Choose Playstyle and Audio Speed** | ![Playstyle and Speed](Screenshots/Screenshot%20(250).png) |
+| **Analytics** | ![Analytics](Screenshots/Screenshot%20(251).png) |
+| **Bookmarks** | ![Bookmarks](Screenshots/Screenshot%20(252).png) |
+| **History** | ![History](Screenshots/Screenshot%20(253).png) |
+| **Now Playing (Bottom player)** | ![Now Playing](Screenshots/Screenshot%20(254).png) |
 
 ---
 
